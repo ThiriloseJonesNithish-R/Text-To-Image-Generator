@@ -1,0 +1,612 @@
+body {
+  font-family: "Poppins", sans-serif;
+
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+header {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  background-color: #0d0d0d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+  color: #00ffcc;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinkCursor 0.5s step-end infinite 3.5s,
+    typing 3.5s steps(20, end) forwards,
+    circularGlow 2s ease-in-out infinite 2.5s;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes circularGlow {
+  0% {
+    filter: drop-shadow(0 0 6px #00ffcc77);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #00ffccaa);
+  }
+  100% {
+    filter: drop-shadow(0 0 6px #00ffcc77);
+  }
+}
+
+.back-button {
+  background-color: #0d0d0d;
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 8px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.back-button:hover {
+  background-color: #333; /* Darker background on hover */
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCursor {
+  from {
+    border-right-color: #00ffcc;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px 20px;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  min-height: calc(
+    100vh - 80px
+  ); /* Ensure main content takes up full viewport height minus header */
+  overflow-y: auto; /* Add vertical scrolling if content overflows */
+}
+
+.instructions {
+  width: 100%;
+  font-size: 1rem; /* Reduced font size */
+  margin-top: 0; /* Remove top margin to ensure no blank space below the header */
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  height: auto; /* Set height to auto to allow content to expand */
+  max-height: none; /* Remove maximum height restriction */
+  overflow-y: visible; /* Ensure content is fully visible */
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+  animation: slideIn 1s ease-in-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.instructions ul {
+  padding-left: 20px;
+}
+
+.instructions li {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+  color: #cccccc; /* Light color before hover */
+}
+
+.instructions li:hover {
+  color: #ffffff; /* Darker shade after hover */
+}
+
+.instructions li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #00ffcc;
+  transition: transform 0.3s ease;
+}
+
+.instructions li:hover::before {
+  transform: scale(1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #444; /* Add border around the form section */
+  padding: 20px; /* Add padding inside the form section */
+  border-radius: 10px; /* Add border radius */
+  background-color: #222; /* Add background color */
+  box-sizing: border-box;
+}
+
+.prompt-container {
+  width: 100%;
+  text-align: left;
+  position: relative; /* Add this to position the aspect ratio buttons */
+}
+
+.prompt-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  color: #00ffcc;
+}
+
+.prompt-container label::after {
+  content: " ✨";
+  animation: subtleGlow 2s ease-in-out infinite;
+}
+
+.prompt-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #d3d3d3;
+  color: #333;
+  height: 100px;
+  resize: none;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.prompt-input::placeholder {
+  color: #666; /* Darker gray for placeholder text */
+}
+
+.prompt-input:hover {
+  background-color: #c0c0c0; /* Darker on hover */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.aspect-ratio-selection {
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  margin-bottom: 2px;
+}
+
+.prompt-input:focus + .aspect-ratio-selection,
+.aspect-ratio-selection.visible {
+  opacity: 1;
+  visibility: visible;
+  animation: slideIn 1s ease-in-out;
+}
+
+.aspect-ratio-option {
+  background-color: rgba(60, 60, 60, 0.9);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden; /* Add this to contain the effect */
+  transition: background-color 0.4s, color 0.4s, top 0.1s;
+}
+
+.aspect-ratio-option:hover {
+  background-color: rgba(80, 80, 80, 0.9);
+  color: #0d0d0d;
+}
+
+.aspect-ratio-option.selected {
+  background-color: #00ffcc;
+  color: #0d0d0d;
+}
+
+/* Update aspect ratio click effect */
+
+.aspect-ratio-option:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 3px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px 40px white;
+}
+
+.aspect-ratio-option:active:after {
+  box-shadow: 0 0 0 0 white;
+  opacity: 50;
+  transition: 0s;
+}
+
+.aspect-ratio-option:active {
+  top: 1px;
+}
+
+.model-selection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 300px;
+}
+
+.model-container {
+  display: flex;
+  gap: 20px;
+  width: 45%;
+  padding-right: 58px;
+  border-right: none; /* Remove the solid border */
+  position: relative;
+}
+
+.model-container::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 20%,
+    #00ffcc99 50%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 100% 100px;
+  animation: movingLight 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #00ffcc);
+}
+
+@keyframes movingLight {
+  0% {
+    background-position: 0 -100px;
+  }
+  100% {
+    background-position: 0 400px;
+  }
+}
+
+.model-card {
+  background-color: #333;
+  color: #00ffcc;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  height: 280px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.model-card img {
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.model-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.model-card.selected {
+  border-color: #00ffcc;
+}
+
+/* Add loading state styles */
+.model-card.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.model-card.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.preview-card {
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 10px;
+  width: 45%;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.preview-card img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.preview-placeholder {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+button {
+  padding: 5px 10px; /* Smaller padding */
+  background-color: rgba(60, 60, 60, 0.9);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:disabled {
+  background-color: #cccccc;
+}
+
+button:hover:not(:disabled) {
+  background-color: #00ffcc;
+}
+
+button::before {
+  display: none;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column; /* Change to column to stack elements vertically */
+  align-items: center; /* Center align items */
+  width: 100%;
+  padding: 10px 20px; /* Reduce top padding */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  animation: slideIn 1s ease-in-out;
+  animation-delay: 0.5s; /* Delay after instructions animation */
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.image-container {
+  width: 100%; /* Set width to 100% to fit within the parent container */
+  max-width: 600px; /* Add a max-width to prevent it from being too wide */
+  margin-top: 20px;
+  border: 2px dotted #00ffcc; /* Green dotted border for generated image */
+  padding: 10px; /* Add padding inside the border */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes borderTravel {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
+@keyframes borderRotate {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Remove all previous button styles and animations */
+
+.small-light-button,
+.download-button {
+  text-decoration: none;
+  width: 85%;
+  margin: 13px auto;
+  padding: 12px 0;
+  display: block;
+  font-family: poppins;
+  font-size: 1rem;
+  text-align: center;
+  background-color: rgba(60, 60, 60, 0.9);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.small-light-button:hover,
+.download-button:hover {
+  background-color: #00ffcc;
+  color: #000;
+}
+
+.small-light-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Add loading bar styles */
+
+@keyframes loadingBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.small-light-button {
+  position: relative;
+  overflow: hidden;
+  /* ...existing code... */
+}
+
+.small-light-button.loading {
+  background-color: #333;
+  cursor: not-allowed;
+}
+
+.small-light-button.loading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #008067, #00ffcc, #00ffc8);
+  animation: loadingBar 15s linear;
+  opacity: 0.3;
+}
+
+/* Remove the old download button click effect styles */
+.download-button:after,
+.download-button:active:after,
+.download-button:active {
+  content: none;
+  box-shadow: none;
+  top: 0;
+}
