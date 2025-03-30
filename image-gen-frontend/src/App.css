@@ -128,7 +128,6 @@ header h1 {
   width: 100%;
   font-size: 1rem; /* Reduced font size */
   margin-top: 0; /* Remove top margin to ensure no blank space below the header */
-  margin-bottom: 20px;
   box-sizing: border-box; /* Include padding in the element's total width and height */
   height: auto; /* Set height to auto to allow content to expand */
   max-height: none; /* Remove maximum height restriction */
@@ -153,10 +152,6 @@ header h1 {
   color: #cccccc; /* Light color before hover */
 }
 
-.instructions li:hover {
-  color: #ffffff; /* Darker shade after hover */
-}
-
 .instructions li::before {
   content: "✔";
   position: absolute;
@@ -166,7 +161,11 @@ header h1 {
 }
 
 .instructions li:hover::before {
-  transform: scale(1);
+  transform: scale(2);
+}
+
+.instructions li:hover {
+  color: #ffffff; /* Darker shade after hover */
 }
 
 @keyframes slideIn {
@@ -207,7 +206,7 @@ header h1 {
 
 .prompt-container label::after {
   content: " ✨";
-  animation: subtleGlow 2s ease-in-out infinite;
+  animation: circularGlow 2s ease-in-out infinite;
 }
 
 .prompt-input {
@@ -215,7 +214,7 @@ header h1 {
   padding: 12px 20px;
   border: 1px solid #333;
   border-radius: 5px;
-  background-color: #d3d3d3;
+  background-color: #c0c0c0;
   color: #333;
   height: 100px;
   resize: none;
@@ -228,80 +227,132 @@ header h1 {
   color: #666; /* Darker gray for placeholder text */
 }
 
-.prompt-input:hover {
-  background-color: #c0c0c0; /* Darker on hover */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-}
-
-.aspect-ratio-selection {
+/* Selections Container: Holds both aspect ratio and resolution buttons */
+.selections-container {
   position: absolute;
   bottom: 8px;
-  left: 20px;
+  left: 15px;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   z-index: 2;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease;
-  margin-bottom: 2px;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
-.prompt-input:focus + .aspect-ratio-selection,
-.aspect-ratio-selection.visible {
+.prompt-input:focus + .selections-container,
+.selections-container.visible {
   opacity: 1;
   visibility: visible;
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 0.5s ease-in-out;
 }
 
-.aspect-ratio-option {
-  background-color: rgba(60, 60, 60, 0.9);
-  color: #fff;
-  padding: 3px 8px;
-  border-radius: 3px;
-  font-size: 12px;
-  cursor: pointer;
-  border: none;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
+/* Dropdown container */
+.dropdown {
   position: relative;
-  overflow: hidden; /* Add this to contain the effect */
-  transition: background-color 0.4s, color 0.4s, top 0.1s;
+  display: inline-block;
 }
 
-.aspect-ratio-option:hover {
-  background-color: rgba(80, 80, 80, 0.9);
-  color: #0d0d0d;
+/* Dropdown button */
+.dropdown-button {
+  background-color: hsla(0, 0%, 24%, 0.777);
+  color: hsl(0, 0%, 80%);
+  padding: 5px 10px;
+  min-width: 120px;
+  border: none;
+  border-radius: 15px; /* Reduced border radius */
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+  z-index: 1000; /* Ensure button is above default but below the arrow */
 }
 
-.aspect-ratio-option.selected {
-  background-color: #00ffcc;
-  color: #0d0d0d;
+.dropdown-button:hover{
+  color:white;
 }
 
-/* Update aspect ratio click effect */
-
-.aspect-ratio-option:after {
-  content: "";
-  display: block;
+/* Dropdown menu */
+.dropdown-options {
+  display: none;
   position: absolute;
-  border-radius: 3px;
-  left: 0;
+  top: 100%; /* Directly below the button (NO GAP) */
+  margin-left: 20%;
+  left: -20%;
+  width: 140%;
+  background-color: rgba(60, 60, 60, 0.9);
+  border-radius: 8px; /* Reduced border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1100; /* Dropdown options layer */
+  overflow: hidden;
+}
+
+/* Upward arrow (▲) positioned above the dropdown-options box */
+/* Placed on the dropdown container so it overlays above the dropdown button */
+.dropdown:hover::after {
+  content: "▲";
+  position: absolute;
+  top: 125%; /* Bottom edge of the button */ 
+  left: 20%;  /* 20% from the left of the dropdown container */ 
+  transform: translateY(-100%); /* Move it upward so it sits above the dropdown-options box */ 
+  font-size: 14px; /* Adjust size as needed */ 
+  color: rgba(60, 60, 60, 0.9); /* Matches the dropdown-options background */ 
+  z-index: 2000; /* High z-index to overlay everything */ 
+  pointer-events: none; /* Allow clicks to pass through */ 
+}
+
+/* Keep dropdown open when hovering */
+.dropdown:hover .dropdown-options,
+.dropdown-options:hover {
+  display: block;
+}
+
+/* Dropdown option items */
+.dropdown-option {
+  position: relative;
+  font-size: 14px;
+  padding: 6px 8px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  margin: 2px 5px;
+  border-radius: 8px; /* Reduced border radius */
+  transition: color 0.3s;
+}
+
+/* Inset effect for options (80% width background fill) */
+.dropdown-option::before {
+  content: "";
+  position: absolute;
   top: 0;
-  width: 100%;
+  left: 10%;
+  width: 80%;
   height: 100%;
-  opacity: 0;
-  transition: all 0.5s;
-  box-shadow: 0 0 10px 40px white;
+  background-color: transparent;
+  border-radius: 8px; /* Reduced border radius */
+  transition: background-color 0.3s;
+  z-index: -1;
 }
 
-.aspect-ratio-option:active:after {
-  box-shadow: 0 0 0 0 white;
-  opacity: 50;
-  transition: 0s;
+/* Hover effect: Darker background for option inset */
+.dropdown-option:hover::before {
+  background-color: #222;
 }
 
-.aspect-ratio-option:active {
-  top: 1px;
+/* Selected option (preselected values and chosen options) */
+.dropdown-option.selected::before {
+  background-color: #00ffcc;
+}
+
+.dropdown-option.selected {
+  color: #000;
+}
+
+/* Also on hover for selected option, text remains black */
+.dropdown-option.selected:hover {
+  color: #000;
 }
 
 .model-selection {
@@ -438,30 +489,6 @@ header h1 {
 .preview-placeholder {
   color: #666;
   font-size: 0.9rem;
-}
-
-button {
-  padding: 5px 10px; /* Smaller padding */
-  background-color: rgba(60, 60, 60, 0.9);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-button:disabled {
-  background-color: #cccccc;
-}
-
-button:hover:not(:disabled) {
-  background-color: #00ffcc;
-}
-
-button::before {
-  display: none;
 }
 
 .error {

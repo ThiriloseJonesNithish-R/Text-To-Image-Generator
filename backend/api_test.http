@@ -1,0 +1,9 @@
+POST http://127.0.0.1:8000/generate
+Content-Type: application/json
+
+{
+  "prompt": "A fantasy castle",
+  "model_choice": 2,
+  "aspect_ratio": "portrait",
+  "resolution": "low"
+}
