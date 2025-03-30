@@ -1,0 +1,20 @@
+# Ignore Python virtual environment
+venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore generated images
+backend/generated_images/
+
+# Ignore Node.js dependencies
+image-gen-frontend/node_modules/
+image-gen-frontend/.parcel-cache/
+image-gen-frontend/dist/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+.vscode/
