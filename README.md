@@ -1,6 +1,5 @@
-![image](https://github.com/user-attachments/assets/c9fb3664-0896-4f17-9ad0-eabfcc711ecb)Here's a comprehensive README.md file for your GitHub repository:
+![image](https://github.com/user-attachments/assets/c9fb3664-0896-4f17-9ad0-eabfcc711ecb)
 
-```markdow
 # AI Image Generator Web App
 
 ![Demo Screenshot](\img\front-end.png)
