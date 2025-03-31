@@ -2,8 +2,6 @@
 
 # AI Image Generator Web App
 
-![Demo Screenshot](\img\front-end.png)
-
 A modern web application that generates AI-powered images based on text prompts, with two distinct artistic models to choose from.
 
 ## Features
