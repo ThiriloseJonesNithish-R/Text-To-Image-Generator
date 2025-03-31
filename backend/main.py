@@ -57,13 +57,13 @@ def get_model(model_choice: int):
     return model_cache[model_choice]
 
 def unload_unused_models():
-    """Periodically check and unload unused models"""
+    """Periodically check and unload unused models (set to 10 seconds for testing)"""
     while True:
         time.sleep(60)  # Check every 60 seconds
         current_time = time.time()
 
         for model_choice in list(model_last_used.keys()):
-            if current_time - model_last_used[model_choice] > 300:  # Unload after 5 mins
+            if current_time - model_last_used[model_choice] > 600:  # Unload after 600 seconds (10 minutes)
                 print(f"Unloading model {MODEL_IDS[model_choice]} due to inactivity...")
                 model_cache[model_choice].to("cpu")  # Move model to CPU
                 del model_cache[model_choice]
@@ -140,4 +140,5 @@ async def generate_image(request: PromptRequest, background_tasks: BackgroundTas
 
     except Exception as e:
         print(f"Error: {str(e)}")
+        # The backend error detail (e.g. "cannot run with cpu" or "unloaded") is included in e
         raise HTTPException(status_code=500, detail=f"Error generating image: {str(e)}")

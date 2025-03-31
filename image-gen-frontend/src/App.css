@@ -1,21 +1,19 @@
 body {
   font-family: "Poppins", sans-serif;
-
   color: #ffffff;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in WebKit browsers */
+  display: none;
 }
 
 header {
@@ -39,76 +37,24 @@ header h1 {
   white-space: nowrap;
   overflow: hidden;
   animation: blinkCursor 0.5s step-end infinite 3.5s,
-    typing 3.5s steps(20, end) forwards,
-    circularGlow 2s ease-in-out infinite 2.5s;
+             typing 3.5s steps(20, end) forwards,
+             circularGlow 2s ease-in-out infinite 2.5s;
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes circularGlow {
-  0% {
-    filter: drop-shadow(0 0 6px #00ffcc77);
-  }
-  50% {
-    filter: drop-shadow(0 0 20px #00ffccaa);
-  }
-  100% {
-    filter: drop-shadow(0 0 6px #00ffcc77);
-  }
-}
-
-.back-button {
-  background-color: #0d0d0d;
-  color: #fff;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-left: 8px;
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.back-button:hover {
-  background-color: #333; /* Darker background on hover */
-}
-
-@keyframes gradientText {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  0% { filter: drop-shadow(0 0 6px #00ffcc77); }
+  50% { filter: drop-shadow(0 0 20px #00ffccaa); }
+  100% { filter: drop-shadow(0 0 6px #00ffcc77); }
 }
 
 @keyframes blinkCursor {
-  from {
-    border-right-color: #00ffcc;
-  }
-  to {
-    border-right-color: transparent;
-  }
+  from { border-right-color: #00ffcc; }
+  to { border-right-color: transparent; }
 }
 
 .main-content {
@@ -117,21 +63,19 @@ header h1 {
   align-items: center;
   width: 100%;
   padding: 0 20px 20px;
-  box-sizing: border-box; /* Include padding in the element's total width and height */
-  min-height: calc(
-    100vh - 80px
-  ); /* Ensure main content takes up full viewport height minus header */
-  overflow-y: auto; /* Add vertical scrolling if content overflows */
+  box-sizing: border-box;
+  min-height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 
 .instructions {
   width: 100%;
-  font-size: 1rem; /* Reduced font size */
-  margin-top: 0; /* Remove top margin to ensure no blank space below the header */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
-  height: auto; /* Set height to auto to allow content to expand */
-  max-height: none; /* Remove maximum height restriction */
-  overflow-y: visible; /* Ensure content is fully visible */
+  font-size: 1rem;
+  margin-top: 0;
+  box-sizing: border-box;
+  height: auto;
+  max-height: none;
+  overflow-y: visible;
   content-visibility: auto;
   contain-intrinsic-size: 0 500px;
   animation: slideIn 1s ease-in-out;
@@ -149,7 +93,7 @@ header h1 {
   margin-bottom: 10px;
   position: relative;
   padding-left: 30px;
-  color: #cccccc; /* Light color before hover */
+  color: #cccccc;
 }
 
 .instructions li::before {
@@ -165,18 +109,12 @@ header h1 {
 }
 
 .instructions li:hover {
-  color: #ffffff; /* Darker shade after hover */
+  color: #ffffff;
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .form-section {
@@ -184,17 +122,17 @@ header h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #444; /* Add border around the form section */
-  padding: 20px; /* Add padding inside the form section */
-  border-radius: 10px; /* Add border radius */
-  background-color: #222; /* Add background color */
+  border: 2px solid #444;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #222;
   box-sizing: border-box;
 }
 
 .prompt-container {
   width: 100%;
   text-align: left;
-  position: relative; /* Add this to position the aspect ratio buttons */
+  position: relative;
 }
 
 .prompt-container label {
@@ -218,16 +156,14 @@ header h1 {
   color: #333;
   height: 100px;
   resize: none;
-  position: relative;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
 .prompt-input::placeholder {
-  color: #666; /* Darker gray for placeholder text */
+  color: #666;
 }
 
-/* Selections Container: Holds both aspect ratio and resolution buttons */
 .selections-container {
   position: absolute;
   bottom: 8px;
@@ -249,67 +185,61 @@ header h1 {
   animation: slideIn 0.5s ease-in-out;
 }
 
-/* Dropdown container */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-/* Dropdown button */
 .dropdown-button {
   background-color: hsla(0, 0%, 24%, 0.777);
   color: hsl(0, 0%, 80%);
   padding: 5px 10px;
   min-width: 120px;
   border: none;
-  border-radius: 15px; /* Reduced border radius */
+  border-radius: 15px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   position: relative;
-  z-index: 1000; /* Ensure button is above default but below the arrow */
+  z-index: 1000;
 }
 
-.dropdown-button:hover{
-  color:white;
+.dropdown-button:hover {
+  color: white;
 }
 
-/* Dropdown menu */
 .dropdown-options {
   display: none;
   position: absolute;
-  top: 100%; /* Directly below the button (NO GAP) */
+  top: 100%;
   margin-left: 20%;
   left: -20%;
   width: 140%;
   background-color: rgba(60, 60, 60, 0.9);
-  border-radius: 8px; /* Reduced border radius */
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1100; /* Dropdown options layer */
+  z-index: 1100;
   overflow: hidden;
 }
 
-/* Upward arrow (▲) positioned above the dropdown-options box */
-/* Placed on the dropdown container so it overlays above the dropdown button */
-.dropdown:hover::after {
-  content: "▲";
+.dropdown-options::before {
+  content: "";
   position: absolute;
-  top: 125%; /* Bottom edge of the button */ 
-  left: 20%;  /* 20% from the left of the dropdown container */ 
-  transform: translateY(-100%); /* Move it upward so it sits above the dropdown-options box */ 
-  font-size: 14px; /* Adjust size as needed */ 
-  color: rgba(60, 60, 60, 0.9); /* Matches the dropdown-options background */ 
-  z-index: 2000; /* High z-index to overlay everything */ 
-  pointer-events: none; /* Allow clicks to pass through */ 
+  top: 0;
+  left: 20%;
+  transform: translateY(-100%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(60, 60, 60, 0.9);
+  z-index: 2000;
+  pointer-events: none;
 }
 
-/* Keep dropdown open when hovering */
 .dropdown:hover .dropdown-options,
 .dropdown-options:hover {
   display: block;
 }
 
-/* Dropdown option items */
 .dropdown-option {
   position: relative;
   font-size: 14px;
@@ -318,11 +248,10 @@ header h1 {
   text-align: center;
   cursor: pointer;
   margin: 2px 5px;
-  border-radius: 8px; /* Reduced border radius */
+  border-radius: 8px;
   transition: color 0.3s;
 }
 
-/* Inset effect for options (80% width background fill) */
 .dropdown-option::before {
   content: "";
   position: absolute;
@@ -331,17 +260,15 @@ header h1 {
   width: 80%;
   height: 100%;
   background-color: transparent;
-  border-radius: 8px; /* Reduced border radius */
+  border-radius: 8px;
   transition: background-color 0.3s;
   z-index: -1;
 }
 
-/* Hover effect: Darker background for option inset */
 .dropdown-option:hover::before {
   background-color: #222;
 }
 
-/* Selected option (preselected values and chosen options) */
 .dropdown-option.selected::before {
   background-color: #00ffcc;
 }
@@ -350,7 +277,6 @@ header h1 {
   color: #000;
 }
 
-/* Also on hover for selected option, text remains black */
 .dropdown-option.selected:hover {
   color: #000;
 }
@@ -369,7 +295,7 @@ header h1 {
   gap: 20px;
   width: 45%;
   padding-right: 58px;
-  border-right: none; /* Remove the solid border */
+  border-right: none;
   position: relative;
 }
 
@@ -394,12 +320,8 @@ header h1 {
 }
 
 @keyframes movingLight {
-  0% {
-    background-position: 0 -100px;
-  }
-  100% {
-    background-position: 0 400px;
-  }
+  0% { background-position: 0 -100px; }
+  100% { background-position: 0 400px; }
 }
 
 .model-card {
@@ -432,37 +354,6 @@ header h1 {
 
 .model-card.selected {
   border-color: #00ffcc;
-}
-
-/* Add loading state styles */
-.model-card.loading {
-  position: relative;
-  overflow: hidden;
-}
-
-.model-card.loading::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
 }
 
 .preview-card {
@@ -498,24 +389,24 @@ header h1 {
 
 .content-container {
   display: flex;
-  flex-direction: column; /* Change to column to stack elements vertically */
-  align-items: center; /* Center align items */
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  padding: 10px 20px; /* Reduce top padding */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
+  padding: 10px 20px;
+  box-sizing: border-box;
   animation: slideIn 1s ease-in-out;
-  animation-delay: 0.5s; /* Delay after instructions animation */
+  animation-delay: 0.5s;
   opacity: 0;
   animation-fill-mode: forwards;
 }
 
 .image-container {
-  width: 100%; /* Set width to 100% to fit within the parent container */
-  max-width: 600px; /* Add a max-width to prevent it from being too wide */
+  width: 100%;
+  max-width: 600px;
   margin-top: 20px;
-  border: 2px dotted #00ffcc; /* Green dotted border for generated image */
-  padding: 10px; /* Add padding inside the border */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
+  border: 2px dotted #00ffcc;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .image-container img {
@@ -527,42 +418,11 @@ header h1 {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes borderTravel {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes borderMove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 300% 0;
-  }
-}
-
-@keyframes borderRotate {
-  to {
-    --border-angle: 360deg;
-  }
-}
-
-/* Remove all previous button styles and animations */
+/* --- Other CSS remains unchanged --- */
 
 .small-light-button,
 .download-button {
@@ -571,7 +431,7 @@ header h1 {
   margin: 13px auto;
   padding: 12px 0;
   display: block;
-  font-family: poppins;
+  font-family: Poppins;
   font-size: 1rem;
   text-align: center;
   background-color: rgba(60, 60, 60, 0.9);
@@ -579,42 +439,39 @@ header h1 {
   border: none;
   border-radius: 24px;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.5);
+  animation: pulsateGlow 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulsateGlow {
+  0% {
+    box-shadow: 0 0 6px rgba(0, 255, 204, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.9);
+  }
 }
 
 .small-light-button:hover,
 .download-button:hover {
-  background-color: #00ffcc;
-  color: #000;
+  animation-play-state: paused;
 }
 
-.small-light-button:disabled {
-  background-color: #cccccc;
+/* Loading state cursor: custom red circle with a white diagonal cross */
+.small-light-button.loading,
+.download-button.loading {
   cursor: not-allowed;
 }
 
-/* Add loading bar styles */
+/* --- End of updated button highlight section --- */
 
+
+/* Loading bar for the generate button */
 @keyframes loadingBar {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-.small-light-button {
-  position: relative;
-  overflow: hidden;
-  /* ...existing code... */
-}
-
-.small-light-button.loading {
-  background-color: #333;
-  cursor: not-allowed;
+  0% { width: 0; }
+  100% { width: 100%; }
 }
 
 .small-light-button.loading::after {
@@ -629,11 +486,21 @@ header h1 {
   opacity: 0.3;
 }
 
-/* Remove the old download button click effect styles */
-.download-button:after,
-.download-button:active:after,
-.download-button:active {
-  content: none;
-  box-shadow: none;
-  top: 0;
+/* Back button styles */
+.back-button {
+  background-color: #0d0d0d;
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 8px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.back-button:hover {
+  background-color: #00ffcc;
+  color: #000;
 }
