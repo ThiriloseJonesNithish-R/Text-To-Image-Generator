@@ -140,4 +140,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Hugging Face for the Stable Diffusion models
 - FastAPI for the efficient backend
 - React community for frontend tools
-```
