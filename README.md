@@ -47,8 +47,8 @@ A modern web application that generates AI-powered images based on text prompts,
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ai-image-generator.git
-   cd ai-image-generator/backend
+   git clone https://github.com/ThiriloseJonesNithish-R/Text-To-Image-Generator.git
+   cd Text-To-Image-Generator/backend
    ```
 
 2. Create and activate a virtual environment:
